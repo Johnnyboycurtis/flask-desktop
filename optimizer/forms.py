@@ -9,8 +9,8 @@ class RegistrationForm(Form):
 
 
 class GAParams(Form):
-    generations = IntegerField("Generations", [validators.NumberRange(min=20, max=10000, message="Enter a number between 20 and 10000")], default=50)
-    popsize = IntegerField("Population Size", [validators.NumberRange(min=20, max = 10000, message = "Enter a number between 20 and 10000")], default=100)
+    generations = IntegerField("Generations", [validators.NumberRange(min=20, max=10000, message="Enter a number between 20 and 10000")], default=20)
+    popsize = IntegerField("Population Size", [validators.NumberRange(min=20, max = 10000, message = "Enter a number between 20 and 10000")], default=20)
 
 
 

@@ -9,24 +9,30 @@ from .forms import RegistrationForm
 
 
 @app.route('/', methods = ['GET', 'POST'])
+@app.route('/home')
 def home():
     form = RegistrationForm()
     return render_template('home/home.html', form=form)
 
 
 
-@app.route('/page')
+@app.route('/run')
 def get_page():
     return send_file('templates/progress/progress.html')
 
+
+def generate():
+    '''
+    Generate data for the EventSource in static/javascript/progress.js
+    '''
+    x = 0
+    while x < 100:
+        print(x)
+        x = x + 10
+        time.sleep(0.2)
+        yield "data:" + str(x) + "\n\n"
+
 @app.route('/progress')
 def progress():
-    def generate():
-        x = 0
-        while x < 100:
-            print(x)
-            x = x + 10
-            time.sleep(0.2)
-            yield "data:" + str(x) + "\n\n"
     return Response(generate(), mimetype= 'text/event-stream')
 

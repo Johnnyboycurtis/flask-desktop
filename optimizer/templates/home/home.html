@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+
+{% block content %}
+<h1>Hello, world</h1>
+
+
+{% from "_formhelpers.html" import render_field %}
+<form method=post>
+  <dl>
+    {{ render_field(form.username) }}
+    {{ render_field(form.email) }}
+  </dl>
+  <p><input type=submit value=Register>
+</form>
+
+<br><br>
+Go to <a href="/page">progress bar</a>
+<br><br>
+
+<p> <a href="/jstutorial">JavaScript Tutorial</a> </p>
+
+{% endblock %}

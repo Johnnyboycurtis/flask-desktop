@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <h1>Genetic Algorithm</h1>
+
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="/results">
+    <dl>
+        {{ render_field(form.generations) }}
+        {{ render_field(form.popsize) }}
+    </dl>
+    <input type=submit value="Submit">
+</form>
+
+
+{% endblock %}

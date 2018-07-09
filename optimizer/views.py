@@ -20,7 +20,8 @@ def demo():
 
 @app.route('/run')
 def get_page():
-    return send_file('templates/progress/progress.html')
+    title = "Running"
+    return render_template('progress/progress.html', title=title) # send_file('templates/progress/progress.html')
 
 
 def generate():
@@ -52,8 +53,12 @@ def ga():
     return render_template('ga/ga.html', form=form, title=title)
 
 
+from . import genetic
+
 @app.route("/results", methods = ["POST"])
 def results():
-    generations = request.form['generations']
-    popsize = request.form['popsize']
-    return "<h1>Results</h1><br><br>Generations: {} <br>Population Size: {}".format(generations, popsize)
+    title = "GA Results"
+    generations = int(request.form['generations'])
+    popsize = int(request.form['popsize'])
+    genetic.simulate(generations, popsize)
+    return render_template("ga/results.html", title=title, generations=generations, popsize=popsize)

@@ -11,7 +11,8 @@ from .forms import RegistrationForm, GAParams
 '''
 Some Demo Views
 '''
-
+@app.route('/', methods = ['GET', 'POST'])
+@app.route('/home', methods = ['GET', 'POST'])
 @app.route('/demo', methods = ['GET', 'POST'])
 def demo():
     form = RegistrationForm()
@@ -34,6 +35,7 @@ def generate():
         x = x + 10
         time.sleep(0.2)
         yield "data:" + str(x) + "\n\n"
+
 
 @app.route('/progress')
 def progress():

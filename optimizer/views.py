@@ -38,27 +38,3 @@ def generate():
 @app.route('/progress')
 def progress():
     return Response(generate(), mimetype= 'text/event-stream')
-
-
-'''
-Main App Views
-'''
-
-@app.route("/", methods = ["GET", "POST"])
-@app.route("/home", methods = ["GET", "POST"])
-@app.route("/ga", methods = ["GET", "POST"])
-def ga():
-    form = GAParams()
-    title = "Genetic Algorithm"
-    return render_template('ga/ga.html', form=form, title=title)
-
-
-from . import genetic
-
-@app.route("/results", methods = ["POST"])
-def results():
-    title = "GA Results"
-    generations = int(request.form['generations'])
-    popsize = int(request.form['popsize'])
-    genetic.simulate(generations, popsize)
-    return render_template("ga/results.html", title=title, generations=generations, popsize=popsize)

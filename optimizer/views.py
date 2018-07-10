@@ -5,9 +5,6 @@ import random
 
 app = Flask(__name__)
 
-from .forms import RegistrationForm, GAParams
-
-
 '''
 Some Demo Views
 '''

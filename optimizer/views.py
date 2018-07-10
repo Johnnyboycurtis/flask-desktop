@@ -25,8 +25,8 @@ def ga():
 
 from . import genetic
 
-@app.route("/results", methods = ["POST"])
-def results():
+@app.route("/progress", methods = ["POST"])
+def progress():
     title = "GA Results"
     directory = request.form['directory']
     bills = request.form['bills']
@@ -42,3 +42,8 @@ def evolve():
     generator = genetic.simulate(project_context['generations'], project_context['popsize'])
     return Response(generator, mimetype= 'text/event-stream')
 
+
+@app.route("/results")
+def results():
+    project_context = genetic.readjson(TMP_DIR, filename='params.json')
+    return render_template("ga/results.html", title='GA Results', project_context=project_context)

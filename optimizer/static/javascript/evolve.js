@@ -7,7 +7,7 @@ source.onmessage = function(event) {
         source.close();
         alert("Finished running! Moving you along now");
         //window.location.replace("http://stackoverflow.com");
-	    document.location.href = '/home'
+	    document.location.href = '/results'
     }
 }
 //window.location.replace("http://stackoverflow.com");

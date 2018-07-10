@@ -6,8 +6,14 @@
     <br><br>
 
     <ul>
-        <li>Generations: {{ generations}}</li>
-        <li>Population Size: {{ popsize }}</li>
+        <li>Project Directory: {{project_context.directory }}</li>
+        <li>Generations: {{ project_context.generations}}</li>
+        <li>Population Size: {{ project_context.popsize }}</li>
     </ul>
+
+
+    <footer>
+        <p>Return <a href="/home">Home</a></p>
+    </footer>
 
 {% endblock %}

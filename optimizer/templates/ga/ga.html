@@ -3,9 +3,17 @@
 {% block content %}
     <h1>Genetic Algorithm</h1>
 
+
+    <ol>
+        <li>Choose a project directory with bills inside</li>
+        <li>Enter parameters</li>
+    </ol>
+
     {% from "_formhelpers.html" import render_field %}
     <form method="post" action="/results">
     <dl>
+        {{ render_field(form.directory) }}
+        {{ render_field(form.bills) }}
         {{ render_field(form.generations) }}
         {{ render_field(form.popsize) }}
     </dl>

@@ -1,9 +1,9 @@
 from flask import Flask
 from flask import render_template, request, send_file, Response
 import time
+import random
 
 app = Flask(__name__)
-#app.config['SECRET_KEY'] = 'ABC123'
 
 from .forms import RegistrationForm, GAParams
 
@@ -15,8 +15,7 @@ Some Demo Views
 @app.route('/home', methods = ['GET', 'POST'])
 @app.route('/demo', methods = ['GET', 'POST'])
 def demo():
-    form = RegistrationForm()
-    return render_template('demo/demo.html', form=form, title = "Demo")
+    return render_template('demo/demo.html', title = "Demo")
 
 
 @app.route('/run')
@@ -33,7 +32,7 @@ def generate():
     while x < 100:
         print(x)
         x = x + 10
-        time.sleep(0.2)
+        time.sleep(random.random())
         yield "data:" + str(x) + "\n\n"
 
 
